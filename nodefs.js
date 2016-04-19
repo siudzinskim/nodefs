@@ -199,7 +199,7 @@ var Layer = (function () {
         var rel = path.relative(this.mountpoint, abs_path);
         var expr = "^" + (rel ? rel + path.sep : '') + "([^" + path.sep + "]*)(" + path.sep + ")?";
         var files = [];
-        var regex = new RegExp(expr);
+        var regex = new RegExp(expr.replace(/\\/g,"\\\\"));
         for (var npath in this.nodes) {
             var match = npath.match(regex);
             if (match) {
